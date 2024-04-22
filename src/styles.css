@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+
+.overflowYHidden {
+    overflow-y: hidden;
+}
+
+pre {
+    white-space: pre-line;
+    word-wrap: break-word;
+    text-align: justify;
+}
+
+.image-background-text {
+    background-image: url('./assets/logo.png');
+    color: transparent;
+    -webkit-background-clip: text;
+    /* For Safari */
+    background-clip: text;
+}
+
+.typewriter {
+    overflow: hidden;
+    /* Ensures the text is not visible until animated */
+    border-right: 2px solid black;
+    /* Adjust thickness and color of the cursor */
+    white-space: nowrap;
+    /* Prevents wrapping of text */
+    animation: typewriter 1.6s steps(40) infinite;
+    /* Adjust animation duration as needed */
+}
+
+@keyframes typewriter {
+    from {
+        width: 0
+    }
+
+    to {
+        width: calc(100% - 20px);
+    }
+}
+
+/* NAVBAR */
+.navImg {
+    background: rgb(26, 0, 169);
+    background: linear-gradient(107deg, rgba(26, 0, 169, 1) 0%, rgba(0, 0, 0, 1) 17%, rgba(9, 10, 10, 1) 91%, rgba(0, 47, 133, 1) 100%);
+}
+
+.navBgImage {
+    background: url("./assets/navbg.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Home */
+.homeBgImage {
+    background: url('./assets/homeBg.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Service */
+.serviceBg {
+    background: rgb(1, 1, 1);
+    background: radial-gradient(circle, rgba(1, 1, 1, 1) 0%, rgba(0, 220, 255, 1) 30%, rgba(9, 10, 10, 1) 100%);
+}
+
+.serviceBg {
+    background: rgb(9, 10, 10);
+    background: linear-gradient(180deg, rgba(9, 10, 10, 1) 14%, rgba(0, 220, 255, 1) 100%);
+}
+
+.serviceCards {
+    background: rgb(1, 1, 1);
+    background: linear-gradient(180deg, rgba(1, 1, 1, 1) 18%, rgba(0, 220, 255, 1) 40%, rgba(9, 10, 10, 1) 100%);
+}
+
+.blurHome {
+    -webkit-backdrop-filter: blur(500px);
+    backdrop-filter: blur(10px);
+}
+
+
+/* Used in Footer */
+.footerBgImage {
+    background: url('./assets/footerBg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+
+/* Used in Contact */
+.bgImage {
+    background: url('./assets/contactBg.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* CSS below used in Contact Page */
+.border {
+    border: 0;
+}
+
+.border:hover {
+    border: 2px solid white;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+.hide:hover {
+    visibility: visible;
+}
+
+/* BLUR */
+.blurEffect {
+    position: relative;
+    overflow: hidden;
+}
+
+.blurEffect:hover {
+    /* background-color: rgba(255, 255, 255, 0); */
+    -webkit-backdrop-filter: blur(500px);
+    backdrop-filter: blur(10px);
+}
+
+/* SERVICES */
+.bgImageServices {
+    background: url('./assets/serviceBg.webp');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
