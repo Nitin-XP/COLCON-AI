@@ -1,7 +1,8 @@
 import OpenAI from "openai";
 import { useState } from 'react';
 
-const openai = new OpenAI({ apiKey: "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", dangerouslyAllowBrowser: true });
+const openaiKey = import.meta.env.VITE_API_KEY;
+const openai = new OpenAI({ apiKey: openaiKey, dangerouslyAllowBrowser: true });
 
 const Service2 = () => {
     let [prompt, setPrompt] = useState('');

@@ -2,7 +2,8 @@ import OpenAI from "openai";
 import { useState } from 'react';
 import { programmingLang } from "../constants/constants";
 
-const openai = new OpenAI({ apiKey: "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", dangerouslyAllowBrowser: true });
+const openaiKey = import.meta.env.VITE_API_KEY;
+const openai = new OpenAI({ apiKey: openaiKey, dangerouslyAllowBrowser: true });
 
 const Service1 = () => {
     let [prompt, setPrompt] = useState('');
@@ -20,7 +21,7 @@ const Service1 = () => {
             model: "gpt-3.5-turbo",
         });
 
-        console.log(completion.choices[0].message);
+        console.log(completion.choices[0].message.content);
         setResponse(completion.choices[0].message.content);
 
         document.getElementById("submitButton").disabled = false;
