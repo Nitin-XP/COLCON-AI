@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import { useState } from 'react';
 
-const openaiKey = "";
+const openaiKey = import.meta.env.VITE_API_KEY;
 const openai = new OpenAI({ apiKey: openaiKey, dangerouslyAllowBrowser: true });
 
 const Service3 = () => {
