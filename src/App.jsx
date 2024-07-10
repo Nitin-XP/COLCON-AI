@@ -1,16 +1,16 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 const LazyHome = React.lazy(() => import('./components/Home'))
-const LazyNavbar = React.lazy(() => import('./components/Navbar'))
-const LazyAbout = React.lazy(() => import('./components/About'))
-const LazyConnect = React.lazy(() => import('./components/Connect'))
-const LazyContact = React.lazy(() => import('./components/Contact'))
+const LazyNavbar = React.lazy(() => import('./components/common/Navbar'))
+const LazyAbout = React.lazy(() => import('./components/common/About'))
+const LazyConnect = React.lazy(() => import('./components/common/Connect'))
+const LazyContact = React.lazy(() => import('./components/common/Contact'))
 const LazyServices = React.lazy(() => import('./components/Services'))
 const LazyService1 = React.lazy(() => import('./components/code-translator'))
-const LazyService2 = React.lazy(() => import('./components/error-debugger'))
-const LazyService3 = React.lazy(() => import('./components/grammar-improver'))
-const LazyService4 = React.lazy(() => import('./components/text-translator'))
-const LazyService5 = React.lazy(() => import('./components/story-generator'))
+const LazyService2 = React.lazy(() => import('./components/Services/error-debugger'))
+const LazyService3 = React.lazy(() => import('./components/Services/grammar-improver'))
+const LazyService4 = React.lazy(() => import('./components/Services/text-translator'))
+const LazyService5 = React.lazy(() => import('./components/Services/story-generator'))
 
 const App = () => {
   return (
