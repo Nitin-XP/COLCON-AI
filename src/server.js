@@ -7,7 +7,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const openai = new OpenAI({ apiKey: "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" });
+const openai = new OpenAI({ apiKey: "" });
 
 app.post("/services/Service1", async (req, res) => {
     const prompt = req.body;
