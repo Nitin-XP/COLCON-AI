@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import logo from '../assets/logo.webp';
-import logo2 from '../assets/logo2.webp';
-import logo3 from '../assets/logo3.webp';
-import '../styles.css';
+import logo from '../../assets/logo.webp';
+import logo2 from '../../assets/logo2.webp';
+import logo3 from '../../assets/logo3.webp';
+import '../../styles.css';
 
 const imgArray = new Array(logo, logo2, logo3);
 

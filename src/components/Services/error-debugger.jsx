@@ -1,8 +1,5 @@
-import OpenAI from "openai";
+import { GeminiAI } from "@/api/api";
 import { useState } from 'react';
-
-const openaiKey = import.meta.env.VITE_API_KEY;
-const openai = new OpenAI({ apiKey: openaiKey, dangerouslyAllowBrowser: true });
 
 const Service2 = () => {
     let [prompt, setPrompt] = useState('');
@@ -11,23 +8,22 @@ const Service2 = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         document.getElementById("submitButton").disabled = true;
-
         setResponse("Loading...")
-        prompt = "Only mention the errors in detail in the snippet given below : " + prompt;
-        const completion = await openai.chat.completions.create({
-            messages: [{ role: "system", content: prompt }],
-            model: "gpt-3.5-turbo",
-        });
 
-        console.log(completion.choices[0].message.content);
-        setResponse(completion.choices[0].message.content);
+        prompt = "``\n" + prompt + "\n``" + "\nReturn Response based on the rules below :\n- Return only the errors in the code given under delimiters.\n- Return causes and consequences of the errors.\n- Don't return the corrected code.\n- If the text under delimiters is not a code, then return Invalid Input!";
+
+        console.log(prompt);
+        const text = await GeminiAI(prompt);
+
+        console.log(text)
+        setResponse(text);
 
         document.getElementById("submitButton").disabled = false;
     }
 
 
     return (
-        <div className=" bgImageServices py-4 text-white">
+        <div className=" eachServiceBg py-4 text-white">
             <div>
                 <h1 className="text-[30px] font-extrabold text-center font-serif ">Error Debugger</h1>
                 <p className=" font-serif text-[20px] text-center p-5 ">Empower your coding journey with our cutting-edge Error Debugger feature. Seamlessly identify and resolve errors within your code snippets, ensuring flawless execution every time.<br /> Say goodbye to debugging hassles and embrace a smoother coding experience with our Error Debugger - your trusted companion in the world of programming excellence.</p>

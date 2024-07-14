@@ -1,6 +1,6 @@
 import { easeInOut, motion } from 'framer-motion'
-import about from '../assets/about.webp'
-import '../styles.css'
+import about from '../../assets/about.webp'
+import '../../styles.css'
 const About = () => {
     return (
         <>

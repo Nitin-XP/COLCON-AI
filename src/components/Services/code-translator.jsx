@@ -1,9 +1,7 @@
-import OpenAI from "openai";
+import { GeminiAI } from "@/api/api";
 import { useState } from 'react';
-import { programmingLang } from "../constants/constants";
+import { programmingLang } from "../../constants/constants";
 
-const openaiKey = import.meta.env.VITE_API_KEY;
-const openai = new OpenAI({ apiKey: openaiKey, dangerouslyAllowBrowser: true });
 
 const Service1 = () => {
     let [prompt, setPrompt] = useState('');
@@ -15,14 +13,14 @@ const Service1 = () => {
 
         let language = document.getElementById("language").value;
         setResponse("Loading...")
-        prompt = "Return only Converted code in" + language + " for " + prompt + "If the above is not a code, then return Invalid Input!";
-        const completion = await openai.chat.completions.create({
-            messages: [{ role: "system", content: prompt }],
-            model: "gpt-3.5-turbo",
-        });
 
-        console.log(completion.choices[0].message.content);
-        setResponse(completion.choices[0].message.content);
+        prompt = "``\n" + prompt + "\n``" + "\nReturn Response based on below rules :\n- Return only converted code in the " + language + ", given under delimiters\n- Return only code and not any additional texts,\n- If the text under delimiters is not a code, then return Invalid Input!";
+
+        console.log(prompt);
+        const text = await GeminiAI(prompt);
+
+        console.log(text)
+        setResponse(text);
 
         document.getElementById("submitButton").disabled = false;
     }
@@ -34,7 +32,7 @@ const Service1 = () => {
 
 
     return (
-        <div className=" text-white bgImageServices py-4">
+        <div className=" text-white eachServiceBg py-4">
             <div>
                 <h1 className="text-[30px] font-extrabold text-center font-serif ">Code Language Converter</h1>
                 <p className=" font-serif text-[20px] text-center p-5 ">Experience the Premier Feature of COLCON AI: Seamlessly Translate Your Programming Code into Any Language!<br />Empower your coding endeavors with COLCON AI's renowned capability to effortlessly convert your code into various programming languages. Simply paste your code below, and within moments, unlock the transformative power of AI to receive the desired output.</p>

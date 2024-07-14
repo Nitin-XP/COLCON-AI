@@ -1,9 +1,5 @@
-import OpenAI from "openai";
+import { GeminiAI } from "@/api/api";
 import { useState } from 'react';
-
-const openaiKey = import.meta.env.VITE_API_KEY;
-
-const openai = new OpenAI({ apiKey: openaiKey, dangerouslyAllowBrowser: true });
 
 const Service4 = () => {
     let [prompt, setPrompt] = useState('');
@@ -15,14 +11,13 @@ const Service4 = () => {
         document.getElementById("submitButton").disabled = true;
 
         setResponse("Loading...")
-        prompt = prompt + "Remove the grammatical errors and convert the statement given above into" + lang + " or if the input is invalid then simply return Invalid Input ";
-        const completion = await openai.chat.completions.create({
-            messages: [{ role: "system", content: prompt }],
-            model: "gpt-3.5-turbo",
-        });
+        prompt = "``" + prompt + "``\n" + "Return the response based on the rules given below :\n" + "- Remove the grammatical errors.\n- Convert the statement given in delimiters above into " + lang + "\n- Return only the response.\n- If any explicit content is found, then simply return `Explicit Content Given!`\n- If the input is invalid then simply return Invalid Input ";
 
-        console.log(completion.choices[0].message.content);
-        setResponse(completion.choices[0].message.content);
+        console.log(prompt);
+        const text = await GeminiAI(prompt);
+
+        console.log(text)
+        setResponse(text);
 
         document.getElementById("submitButton").disabled = false;
     }
@@ -33,7 +28,7 @@ const Service4 = () => {
     }
 
     return (
-        <div className=" py-4 bgImageServices text-white">
+        <div className=" py-4 eachServiceBg text-white">
             <div>
                 <h1 className="text-[30px] font-extrabold text-center font-serif ">Text Translator</h1>
                 <p className=" font-serif text-[20px] text-center p-5 px-[280px] hidden lg:block ">Introducing our Text Translator feature! Seamlessly translate sentences into various languages, enabling global communication in under 30 words. Unlock linguistic diversity effortlessly.</p>
@@ -42,9 +37,9 @@ const Service4 = () => {
                 <div className=" w-[90%] lg:w-[50%] items-center justify-center">
                     <form onSubmit={handleSubmit} method="post">
                         <div className=' items-center mt-3 rounded-xl'>
-                            <textarea rows={2} placeholder="Paste Your Text Here!" className="  p-3 w-full text-start items-center justify-center rounded-lg" onChange={(e) => setPrompt(e.target.value)} value={prompt} />
+                            <textarea rows={2} placeholder="Paste Your Text Here!" className="  p-3 pl-6 w-full text-start items-center justify-center rounded-lg" onChange={(e) => setPrompt(e.target.value)} value={prompt} />
 
-                            <input type="text" placeholder="Mention the language in which you're converting!" className="  p-3 w-full text-start items-center justify-center rounded-lg" onChange={(e) => setLang(e.target.value)} value={lang} />
+                            <center><input type="text" placeholder="Language?" className=" my-2 p-3 pl-6 w-full md:w-1/2 text-center items-center justify-center rounded-lg" onChange={(e) => setLang(e.target.value)} value={lang} /></center>
                         </div>
                         <center><button type='submit' id="submitButton" className="bg-black text-white hover:bg-white hover:text-black my-2 font-serif font-bold p-5 items-center rounded-2xl text-center " onClick={handleSubmit}>Submit</button></center>
                     </form>

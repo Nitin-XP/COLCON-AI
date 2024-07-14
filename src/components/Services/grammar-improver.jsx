@@ -1,8 +1,5 @@
-import OpenAI from "openai";
+import { GeminiAI } from '@/api/api';
 import { useState } from 'react';
-
-const openaiKey = import.meta.env.VITE_API_KEY;
-const openai = new OpenAI({ apiKey: openaiKey, dangerouslyAllowBrowser: true });
 
 const Service3 = () => {
     let [prompt, setPrompt] = useState('');
@@ -11,16 +8,14 @@ const Service3 = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         document.getElementById("submitButton").disabled = true;
-
         setResponse("Loading...")
-        prompt = prompt + "Remove the grammatical errors and enhance the tone of the statement given above or if the input is invalid then simply return Invalid Input ";
-        const completion = await openai.chat.completions.create({
-            messages: [{ role: "system", content: prompt }],
-            model: "gpt-3.5-turbo",
-        });
 
-        console.log(completion.choices[0].message.content);
-        setResponse(completion.choices[0].message.content);
+        prompt = "``" + prompt + "``" + "\nGive response based on below rules :\n- Only return the corrected version, not any extra texts.\n- Remove the grammatical errors \n- enhance the tone of the statement given above \n- if the input is invalid then simply return Invalid Input ";
+        console.log(prompt);
+        const text = await GeminiAI(prompt);
+
+        console.log(text)
+        setResponse(text);
 
         document.getElementById("submitButton").disabled = false;
     }
@@ -31,7 +26,7 @@ const Service3 = () => {
     }
 
     return (
-        <div className=" py-4 bgImageServices text-white">
+        <div className=" py-4 eachServiceBg text-white">
             <div>
                 <h1 className="text-[30px] font-extrabold text-center font-serif ">Grammar Improver</h1>
                 <p className=" font-serif text-[20px] text-center p-5 px-[280px] hidden lg:block ">Enhance and refine your writing effortlessly with our feature that seamlessly corrects grammatical errors and elevates the tone of your paragraphs, ensuring polished and professional content every time.</p>

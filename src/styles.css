@@ -46,16 +46,9 @@ pre {
 
 /* NAVBAR */
 .navImg {
-    background: rgb(26, 0, 169);
-    background: linear-gradient(107deg, rgba(26, 0, 169, 1) 0%, rgba(0, 0, 0, 1) 17%, rgba(9, 10, 10, 1) 91%, rgba(0, 47, 133, 1) 100%);
+    background: conic-gradient(from 0deg at 60% 125%, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.71), rgba(218, 218, 218, 1), rgba(21, 12, 12, 1), rgba(3, 0, 0, 1))
 }
 
-.navBgImage {
-    background: url("./assets/navbg.gif");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
 
 /* Home */
 .homeBgImage {
@@ -86,6 +79,9 @@ pre {
     backdrop-filter: blur(10px);
 }
 
+.eachServiceBg {
+    background: conic-gradient(from 105deg at 50% 50%, rgba(0, 220, 255, 0.72), rgba(0, 0, 0, 1), rgba(0, 220, 255, 0.72), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), rgba(0, 220, 255, 0.7))
+}
 
 /* Used in Footer */
 .footerBgImage {
